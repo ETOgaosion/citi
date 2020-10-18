@@ -1,0 +1,89 @@
+<view class="container">
+  <view class="username">
+    欢迎，{{username}}{{position}}
+  </view>
+  <view class="topcontainer">
+    <view class="scancode">
+      <icon class="iconfont icon-scanqrcode" bindtap="scanqrcode"></icon>
+    </view>
+    <view class="search">
+      <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+      <image src="/photos/component/search.svg"></image>
+    </view>
+    <view class="position">
+      <icon class="iconfont icon-position" bindtap="position"></icon>
+    </view>
+  </view>
+  <view class="notice">
+    <swiper class="notice-swiper" autoplay circular vertical>
+      <navigator wx:for="{{msgList}}" wx:key="index" url="/pages/notice/index">
+        <swiper-item>
+          <navigator url="/pages/notice/index">
+            <view class="notice-swiper-item">
+              <icon class="iconfont icon-notice"></icon>
+              <text>最新公告:{{item.text}}</text>
+              <icon class="iconfont icon-spot"></icon>
+            </view>
+          </navigator>
+        </swiper-item>
+      </navigator>
+    </swiper>
+  </view>
+  <view class="recom-bg">
+    <view class="recom">
+      <text class="recom-text">精品推荐</text>
+    </view>
+  </view>
+  <view class="swiper">
+    <navigator url="/pages/notice/index">
+      <swiper indicator-dots="ture" autoplay="ture" interval="3600" duration="3600" class="swiper-self"
+        style="height:450rpx;">
+        <block wx:for="{{photos}}" wx:key="index">
+          <swiper-item class="swiper-item">
+            <image style="height:450rpx" src="{{item.src}}" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </navigator>
+  </view>
+  <view class="content-container">
+    <view class="showboard-head">
+      <view class="showboard">
+        <view class="showboard-head-left">
+          <view class="showborad-title1"><text class="showborad-title1-text">商铺分类</text></view>
+        </view>
+      </view>
+      <view class="showboard-head-right">
+        <view class="ordering">
+          <icon class="iconfont icon-ordering" bindtap="ordering"></icon>
+          <text class="ordering-text">防疫排名</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="showboard2">
+  <view class="showboard-scroll">
+    <vtabs class="showboard-items" vtabs="{{vtabs}}" tab-bar-class="showboard-item" active-class="active"
+      activeTab="{{index}}" bindtabclick="onTabCLick" bindchange="onChange">
+      <block wx:for="{{vtabs}}" wx:key="title">
+        <vtabs-content tabIndex="{{index}}">
+          <view class="vtabs-content-item shops-container">
+            <view class="shops-box" wx:for="{{shops[index].category}}" wx:key="index" bindtap="toDetailsTap"
+              data-id="{{item.index}}">
+              <navigator url="/pages/shops/index?shopID={{selected}}&shopname={{item.name}}&shopimg={{item.photo}}">
+                <view class="img-box">
+                  <image src="{{item.photo}}" class="image" mode="aspectFill" lazy-load="true" />
+                </view>
+                <view class="shops-text">
+                  <view class="shops-title">{{item.name}}</view>
+                  <view class="shops-price">进店看看>>></view>
+                </view>
+              </navigator>
+            </view>
+          </view>
+        </vtabs-content>
+      </block>
+    </vtabs>
+  </view>
+</view>

@@ -1,0 +1,109 @@
+<view class="wholepage">
+  <view class="container">
+    <view class="username">
+      欢迎，{{username}}{{position}}
+    </view>
+  </view>
+  <view class="head">
+    <image src="{{goodimg}}" class="image"></image>
+  </view>
+  <view class="good-detail">
+    <view class="good-info">
+      <text class="good-name">{{goodname}}</text>
+      <text class="good-price">￥{{goodprice}}</text>
+    </view>
+    <view class="good-choose">
+      <van-cell custom-class="vw100" is-link
+        bind:click="bindGuiGeTap">
+        <view class="type">
+          <text class="good-choose-text">选择规格</text>
+        </view>
+      </van-cell>
+      <view class="place">
+      </view>
+      <view class="protection">
+
+      </view>
+    </view>
+    <view class="covid19">
+      <navigator>
+        <image></image>
+        <image></image>
+        <image></image>
+      </navigator>
+    </view>
+    <view class="review">
+      <view class="review-1">
+        <text class="review-1-text"></text>
+        <image class="review-1-image"></image>
+      </view>
+    </view>
+    <view class="detail-info">
+      <view wx:for="{{detail-image}}" wx:key="index">
+        <image src="{{detail-image}}"></image>
+      </view>
+    </view>
+
+    <view class="footer-box">
+      <view class="shop-contact scancode">
+        <image class="icon" src="/photos/component/contact.png" />
+      </view>
+      <view class="shop-share scancode">
+        <image class="icon" src="/photos/component/share.png" />
+      </view>
+      <view class="shop-collect scancode">
+        <image wx:if="{{collected==0}}" class="icon" src="/photos/component/collect.png" />
+        <image wx:else class="icon" src="/photos/component/collected.png" />
+      </view>
+      <view class="buy">
+        <view>直接购买</view>
+      </view>
+      <view class="cart">
+        <view>加入购物车</view>
+      </view>
+    </view>
+  </view>
+  <view class="show-popup" hidden="{{hideShopPopup}}" catchtouchmove="true">
+    <view class="popup-mask" bindtap="closePopupTap"></view>
+    <view class="popup-contents">
+      <view class="pop-goods-info">
+        <view class="pop-img-box">
+          <image src="{{goodimg}}" class="goods-thumbnail" bindtap="previewImage" data-url="{{goodimg}}" />
+        </view>
+        <view class="pop-goods-des">
+          <view class="pop-goods-title">{{goodname}}</view>
+          <view class="pop-goods-price">
+            ¥ <text class="t1">{{goodprice}}</text>
+          </view>
+        </view>
+        <image class="pop-goods-close" src="/images/icon/close0.svg" bindtap="closePopupTap"></image>
+      </view>
+      <view class="size-label-box">
+        <block wx:for="{{goodsDetail}}"wx:key="id" wx:for-index="idx" >
+          <view class="label">{{item.name}}</view>
+          <view class="label-item-box">
+            <view wx:for="{{goodsDetail[idx].value}}" wx:key="index" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertychildindex="{{index}}" class="label-item {{item.active==1? 'active' : '' }}" >
+              {{item.num}}
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="buy-num-box">
+        <view class="num-label">购买数量</view>
+        <view class="num-box">
+          <view class="num-jian {{buyNumber == buyNumMin ? 'hui': ''}}" bindtap="minusTap">-</view>
+          <view class="num-input">
+            <input type="number" value="{{buyNumber}}" disabled/>
+          </view>
+          <view class="num-jia {{buyNumber== buyNumMax ? 'hui': ''}}" bindtap="plusTap">+</view>
+        </view>
+      </view>
+      <view class="safeAreaOldPaddingBttom safeAreaNewPaddingBttom" bindtap="addShopCar">
+        <view class="popup-join-btn">加入购物车</view>
+      </view>
+      <view class="safeAreaOldPaddingBttom safeAreaNewPaddingBttom" data-shopType="{{shopType}}"bindtap="buyNow">
+        <view class="popup-buy-btn">立即购买</view>
+      </view>
+    </view>
+  </view>
+</view>

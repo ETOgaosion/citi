@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="username">
+    欢迎，{{username}}{{position}}
+  </view>
+  <view class="topcontainer">
+    <view class="scancode">
+      <icon class="iconfont icon-scanqrcode" bindtap="scanqrcode"></icon>
+    </view>
+    <view class="search">
+      <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+      <image src="/photos/component/search.svg"></image>
+    </view>
+    <view class="position">
+      <icon class="iconfont icon-position" bindtap="position"></icon>
+    </view>
+  </view>
+</view>
+<view class="notice">
+  <view class="notice-items" wx:for="{{notice}}" wx:key="index">
+    <navigator class="notice-item" url="{{item.src}}">
+      <image src="{{item.photo}}"></image>
+      <view class="notice-text">
+        <text class="text1">{{item.name}}</text>
+        <text class="text2">疯狂大甩卖</text>
+      </view>
+    </navigator>
+  </view>
+</view>

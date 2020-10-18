@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="username">
+    欢迎，{{username}}{{position}}
+  </view>
+  <view class="topcontainer">
+    <view class="scancode">
+      <icon class="iconfont icon-scanqrcode" bindtap="scanqrcode"></icon>
+    </view>
+    <view class="search">
+      <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+      <image src="/photos/component/search.svg"></image>
+    </view>
+    <view class="position">
+      <icon class="iconfont icon-position" bindtap="position"></icon>
+    </view>
+  </view>
+</view>
+<view class="head">
+  <image src="{{shopimg}}" class="image"></image>
+  <view class="head-name"><text class="head-name-text">{{shopname}}</text></view>
+  <image src="{{shopimg}}" class="head-image"></image>
+</view>
+<view class="showboard2">
+  <view class="showboard-scroll">
+    <vtabs class="showboard-items" vtabs="{{vtab2}}" tab-bar-class="showboard-item" active-class="active"
+      activeTab="{{index}}" bindtabclick="onTabCLick" bindchange="onChange">
+      <block wx:for="{{vtab}}" wx:key="index">
+        <vtabs-content tabIndex="{{index}}">
+          <view class="vtabs-content-item goods-container">
+            <view class="goods-box" wx:for="{{vtab[index]}}" wx:key="index"
+              data-id="{{item.index}}">
+              <navigator url="/pages/goods-details/index?id={{item.index}}&goodname={{item.name}}&goodimg={{item.photo}}&goodprice={{item.price}}">
+                <view class="img-box">
+                  <image src="{{item.photo}}" class="image" mode="aspectFill" lazy-load="true" />
+                </view>
+                <view class="goods-text">
+                  <view class="goods-title">{{item.name}}</view>
+                  <view class="goods-price">￥{{item.price}}>>></view>
+                </view>
+              </navigator>
+            </view>
+          </view>
+        </vtabs-content>
+      </block>
+    </vtabs>
+  </view>
+</view>

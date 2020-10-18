@@ -1,0 +1,68 @@
+{
+  "pages":[
+    "pages/Middlemanindex/index",
+    "pages/logs/logs",
+    "pages/shops/index",
+    "pages/goods-details/index",
+    "pages/notice/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "中间商",
+    "navigationBarTextStyle":"black"
+  },
+  "usingComponents": {
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-count-down": "@vant/weapp/count-down/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-progress": "@vant/weapp/progress/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-sidebar": "@vant/weapp/sidebar/index",
+    "van-sidebar-item": "@vant/weapp/sidebar-item/index",
+    "van-empty": "@vant/weapp/empty/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "点击授权"
+    }
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#fc1fa3",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [{
+      "pagePath": "pages/Middlemanindex/index",
+      "text": "商铺大全",
+      "iconPath": "/photos/component/store.png",
+      "selectedIconPath": "/photos/component/store.png"
+    },{
+      "pagePath": "pages/Middlemanindex/index",
+      "text": "购物车",
+      "iconPath": "/photos/component/cart1.png",
+      "selectedIconPath": "/photos/component/cart1.png"
+    },{
+      "pagePath": "pages/Middlemanindex/index",
+      "text": "我的小店",
+      "iconPath": "/photos/component/myshop.png",
+      "selectedIconPath": "/photos/component/myshop.png"
+    },{
+      "pagePath": "pages/Middlemanindex/index",
+      "text": "个人中心",
+      "iconPath": "/photos/component/self.png",
+      "selectedIconPath": "/photos/component/self.png"
+    }]
+  }
+}
